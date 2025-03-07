@@ -52,7 +52,8 @@ if page == "Home":
                     st.session_state.show_login = False  # Hide form after login
                 else:
                     st.error("❌ Invalid email or password. Access denied!")
-
+  
+    
     # Display Profile Section
     st.subheader("👩‍💻 About Me")
 
@@ -81,6 +82,12 @@ if page == "Home":
     about_me = st.text_area("Write a short description about yourself", PROFILE_DETAILS["about_me"])
     st.write(about_me)
 
+  # Resume download button
+    with open("RESUME.pdf", "rb") as file:
+        resume_bytes = file.read()
+    st.download_button(label="📄 Download Resume", data=resume_bytes, file_name="resume.pdf", mime="application/pdf")
+    
+    st.markdown("---")
 
 # Projects Page with Filtering System
 elif page == "Projects":
